@@ -45,11 +45,19 @@ FEEDS_BY_TOPIC = {
         "https://spectrum.ieee.org/rss/fulltext"
     ],
     "Regional / DACH / Europe": [
+        "https://www.deutsche-startups.de/feed/",
+        "https://www.businessinsider.de/gruenderszene/rss",
+        "https://t3n.de/rss.xml",
+        "https://www.startupvalley.news/de/feed/",
+        "https://www.handelsblatt.com/contentexport/feed/tech-rss",
+        "https://www.wiwo.de/contentexport/feed/gruender-rss",
+        "https://brutkasten.com/feed/",
+        "https://www.it-times.de/feed/",
+        "https://www.heise.de/rss/heise-atom.xml",
+        "https://www.startbase.com/rss/",
         "https://siliconcanals.com/feed/",
         "https://technation.io/feed/",
-        "https://www.startus-insights.com/feed/",
-        "https://www.businessinsider.de/rss",
-        "https://www.handelsblatt.com/contentexport/feed/tech-rss"
+        "https://www.startus-insights.com/feed/"
     ]
 }
 
