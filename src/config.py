@@ -58,8 +58,8 @@ OPENVC_LOCAL_PATH = DATA_DIR / "openvc_startups_sample.json"
 OPENVC_GITHUB_URL = "https://raw.githubusercontent.com/openvc/startup-dataset/main/startup_dataset.json"
 
 # Output files
-RSS_ARTICLES_PATH = DATA_DIR / "rss_articles.json"
+RSS_ARTICLES_PATH = DATA_DIR / "ventai_articles.json"
 OPENVC_PATH = DATA_DIR / "openvc_startups.json"
 RESEARCH_MERGED_PATH = DATA_DIR / "research_merged.json"
-STARTUPS_EXTRACTED_PATH = DATA_DIR / "startups_extracted.json"
-STARTUPS_ANALYZED_PATH = DATA_DIR / "startups_analyzed.json"
+STARTUPS_EXTRACTED_PATH = DATA_DIR / "ventai_extracted.json"
+STARTUPS_ANALYZED_PATH = DATA_DIR / "ventai_analyzed.json"

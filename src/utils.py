@@ -13,7 +13,7 @@ def save_results(startups: List[Dict], topic: str, output_dir: str = "data") -> 
     safe_topic = "".join(c for c in topic if c.isalnum() or c in (' ', '-', '_')).strip()
     safe_topic = safe_topic.replace(' ', '_')[:50]
     
-    filename = f"startups_{safe_topic}.json"
+    filename = f"ventai_{safe_topic}.json"
     filepath = os.path.join(output_dir, filename)
     
     with open(filepath, 'w', encoding='utf-8') as f:
@@ -21,7 +21,7 @@ def save_results(startups: List[Dict], topic: str, output_dir: str = "data") -> 
     
     # Also save to standard path (optional)
     try:
-        extracted_path = Path(output_dir) / "startups_extracted.json"
+        extracted_path = Path(output_dir) / "ventai_extracted.json"
         extracted_path.parent.mkdir(exist_ok=True)
         with open(extracted_path, 'w', encoding='utf-8') as f:
             json.dump(startups, f, indent=2, ensure_ascii=False)

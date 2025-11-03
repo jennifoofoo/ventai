@@ -1,4 +1,4 @@
-# Market Mapper - startup discovery app
+# VentAI - AI-powered venture intelligence app
 import streamlit as st
 import sys
 from pathlib import Path
@@ -15,11 +15,11 @@ from src.visualize import create_category_bar_chart, create_country_pie_chart
 from src.config import FEEDS_BY_TOPIC
 
 # Page setup
-st.set_page_config(page_title="Market Mapper", page_icon="🧭", layout="wide")
+st.set_page_config(page_title="VentAI", page_icon="🧠", layout="wide")
 
 # Header
-st.title("🧭 Market Mapper – Multi-Agent Startup Discovery")
-st.markdown("Discover and analyze startups using RSS feeds and OpenVC datasets")
+st.title("🧠 VentAI – AI-Powered Venture Intelligence")
+st.markdown("Discover, analyze, and predict startup ecosystems using local AI agents")
 
 # Session state
 if 'results' not in st.session_state:
@@ -61,11 +61,11 @@ with st.sidebar:
     """)
 
 # Main input
-topic = st.text_input("Enter a topic to research", placeholder="e.g., AI for SMEs Europe", key="topic_input")
+topic = st.text_input("Enter a topic to research", placeholder="e.g., AI in Manufacturing Europe", key="topic_input")
 
 col1, col2 = st.columns([1, 4])
 with col1:
-    run_button = st.button("🚀 Run Market Mapping", type="primary", use_container_width=True)
+    run_button = st.button("🚀 Run Intelligence Scan", type="primary", use_container_width=True)
 
 status_container = st.container()
 results_container = st.container()
@@ -113,7 +113,7 @@ if run_button and topic:
     try:
         # Step 1: Research
         progress_bar.progress(10)
-        status_text.text(f"🔍 Phase 1/4: Fetching data from '{feed_category}' feeds...")
+        status_text.text(f"🔍 VentAI: Starting venture intelligence workflow...")
         
         research_agent = ResearchAgent(max_entries_per_feed=max_entries_per_feed)
         research_agent.set_status_callback(research_callback)
@@ -128,12 +128,12 @@ if run_button and topic:
         
         rss_count = sum(1 for a in articles if a.get('source') != 'OpenVC')
         openvc_count = sum(1 for a in articles if a.get('source') == 'OpenVC')
-        research_callback(f"🔍 ResearchAgent: Loaded {len(FEEDS_BY_TOPIC[feed_category])} feeds for '{feed_category}'")
-        research_callback(f"📰 Collected {rss_count} articles + {openvc_count} OpenVC entries")
+        research_callback(f"🔍 VentAI: Fetched {rss_count} articles from {len(FEEDS_BY_TOPIC[feed_category])} feeds")
+        research_callback(f"📰 VentAI: Collected {rss_count} articles + {openvc_count} OpenVC entries")
         
         # Step 2: Extraction
         progress_bar.progress(40)
-        status_text.text("🤖 Phase 2/4: Extracting startup information with Ollama...")
+        status_text.text("🧠 VentAI: Extracting startup intelligence with Ollama...")
         
         extraction_agent = ExtractionAgent(model=model_name)
         extraction_agent.set_status_callback(extraction_callback)
@@ -143,12 +143,12 @@ if run_button and topic:
             st.warning("⚠️ No startups extracted. The data may not contain relevant startup information.")
             st.stop()
         
-        extraction_callback(f"🧠 ExtractionAgent: Identified {len(startups)} startups via Ollama")
+        extraction_callback(f"🧠 VentAI: Identified {len(startups)} startups via Ollama")
         
         # Step 3: Enrichment (optional)
         if enable_enrichment:
             progress_bar.progress(70)
-            status_text.text("🌐 Phase 3/4: Enriching startup data from websites...")
+            status_text.text("🌐 VentAI: Enriching venture data from websites...")
             
             enrichment_agent = EnrichmentAgent()
             enrichment_agent.set_status_callback(enrichment_callback)
@@ -159,7 +159,7 @@ if run_button and topic:
         
         # Step 4: Analysis
         progress_bar.progress(80)
-        status_text.text("📊 Phase 4/4: Analyzing and clustering...")
+        status_text.text("📊 VentAI: Clustering and analyzing venture data...")
         
         analysis_agent = AnalysisAgent(n_clusters=n_clusters)
         analysis_agent.set_status_callback(analysis_callback)
@@ -179,8 +179,8 @@ if run_button and topic:
         # Complete
         progress_bar.progress(100)
         n_clusters_found = df['cluster'].nunique() if 'cluster' in df.columns else 0
-        analysis_callback(f"📊 AnalysisAgent: Clustered into {n_clusters_found} categories")
-        status_text.success(f"✅ Report ready! Found {len(startups)} startups from {len(articles)} data points.")
+        analysis_callback(f"📊 VentAI: Clustered into {n_clusters_found} categories")
+        status_text.success(f"✅ VentAI Intelligence Report Ready! Found {len(startups)} startups from {len(articles)} data points.")
         
     except Exception as e:
         st.error(f"❌ Error: {str(e)}")
@@ -190,7 +190,7 @@ if run_button and topic:
 if st.session_state.results and st.session_state.analysis_df is not None:
     with results_container:
         st.markdown("---")
-        st.header("📈 Results")
+        st.header("📈 Intelligence Report")
         
         df = st.session_state.analysis_df
         
@@ -242,7 +242,7 @@ if st.session_state.results and st.session_state.analysis_df is not None:
         st.download_button(
             label="📥 Download JSON",
             data=json_str,
-            file_name=f"startups_{topic.replace(' ', '_')[:50]}.json",
+            file_name=f"ventai_{topic.replace(' ', '_')[:50]}.json",
             mime="application/json"
         )
 
@@ -250,8 +250,8 @@ if st.session_state.results and st.session_state.analysis_df is not None:
 st.markdown("---")
 st.markdown(
     "<div style='text-align: center; color: #666;'>"
-    "Powered by Ollama (local LLM) + Python Agents • "
-    "Built with Streamlit"
+    "🧠 VentAI – Discover. Analyze. Predict. • "
+    "Powered by Ollama (local LLM) + Python Agents"
     "</div>",
     unsafe_allow_html=True
 )

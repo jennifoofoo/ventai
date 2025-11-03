@@ -1,2 +1,2 @@
-"""Market Mapper source package."""
+# VentAI – AI-powered Venture Intelligence System
 

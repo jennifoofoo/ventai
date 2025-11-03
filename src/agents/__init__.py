@@ -1,2 +1,2 @@
-"""Market Mapper agents package."""
+# VentAI agents package
 

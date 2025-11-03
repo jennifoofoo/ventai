@@ -1,6 +1,8 @@
-# Market Mapper
+# 🧠 VentAI – AI-Powered Venture Intelligence
 
-App to discover and analyze startups using local AI agents (Ollama). Uses RSS feeds in different categories and OpenVC datasets as data sources.
+VentAI is a local, open-source market and startup intelligence engine that uses AI agents and LLMs (via Ollama) to discover, extract, and analyze startups and emerging trends from global tech news and open data sources.
+
+**Discover. Analyze. Predict. — All with AI.**
 
 ## What does it do?
 
@@ -9,14 +11,13 @@ The app has 4 agents that work sequentially:
 1. **ResearchAgent** - Fetches RSS feeds and OpenVC data
    - 6 categories with different RSS feeds (General Startups, AI & DeepTech, Fintech & SaaS, etc.)
    - Optional OpenVC dataset from local file or GitHub
+   
 2. **ExtractionAgent** - Extracts startup info using Ollama (local LLM)
-
    - Processes articles in batches (5 at a time for better performance)
    - Filters out irrelevant articles first
    - Extracts: name, description, country, category
 
 3. **EnrichmentAgent** (optional) - Scrapes websites for more info
-
    - Can be enabled but it's slower
 
 4. **AnalysisAgent** - Clusters startups and creates visualizations
@@ -26,8 +27,7 @@ The app has 4 agents that work sequentially:
 ## Setup
 
 You need:
-
-- Python 3.11+
+- Python 3.11+ 
 - Ollama installed and running
 
 ```bash
@@ -39,7 +39,7 @@ ollama pull mistral
 Then:
 
 ```bash
-cd market_mapper
+cd ventai
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -49,10 +49,10 @@ streamlit run app.py
 1. Make sure Ollama is running (`ollama serve`)
 2. Start the app with `streamlit run app.py`
 3. In the browser:
-   - Enter a topic (e.g. "AI for SMEs Europe")
+   - Enter a topic (e.g. "AI in Manufacturing Europe")
    - Select category (dropdown)
    - Adjust optional settings
-   - Click "Run Market Mapping"
+   - Click "Run Intelligence Scan"
 4. View results: table, charts, download
 
 ## RSS Feed Categories
@@ -67,7 +67,7 @@ streamlit run app.py
 ## File Structure
 
 ```
-market_mapper/
+ventai/
 ├── app.py                 # Streamlit UI
 ├── src/
 │   ├── config.py          # RSS Feed config
@@ -81,12 +81,15 @@ market_mapper/
 ## Output
 
 Results are saved in `data/`:
-
-- `rss_articles.json` - All RSS articles
-- `startups_extracted.json` - Extracted startups
-- `startups_{topic}.json` - Topic-specific results
+- `ventai_articles.json` - All RSS articles
+- `ventai_extracted.json` - Extracted startups
+- `ventai_{topic}.json` - Topic-specific results
 
 Can also be downloaded directly from the UI.
+
+## About VentAI
+
+VentAI combines intelligent data collection, natural language extraction, and clustering to map startup ecosystems and venture trends in real time. It runs entirely locally using Ollama and open data sources.
 
 ## Troubleshooting
 

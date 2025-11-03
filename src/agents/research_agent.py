@@ -189,7 +189,7 @@ class ResearchAgent:
             with open(RSS_ARTICLES_PATH, 'w', encoding='utf-8') as f:
                 json.dump(articles, f, indent=2, ensure_ascii=False)
             
-            self._update_status(f"💾 Saved {len(articles)} articles to data/rss_articles.json")
+            self._update_status(f"💾 Saved {len(articles)} articles to data/ventai_articles.json")
             
         except Exception as e:
             self._update_status(f"⚠️ Error saving articles: {str(e)[:50]}")
